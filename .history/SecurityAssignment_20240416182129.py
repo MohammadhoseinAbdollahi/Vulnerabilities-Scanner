@@ -11,10 +11,10 @@ for network in networks:
     if network.name == 'monitoring_network':
         aim_network = network
         break
-print(aim_network.attrs)
+print(aim_network)
 print(aim_network.name)
-
-print(aim_network.Containers)
+containers = aim_network.conta
+print(aim_network.containers)
 # If the network was found, print the names of all containers in it
 if aim_network is not None:
     for container in aim_network.containers:

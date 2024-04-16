@@ -13,7 +13,7 @@ for network in networks:
         break
 print(aim_network.attrs)
 print(aim_network.name)
-
+containers = aim_network.Containers
 print(aim_network.Containers)
 # If the network was found, print the names of all containers in it
 if aim_network is not None:
