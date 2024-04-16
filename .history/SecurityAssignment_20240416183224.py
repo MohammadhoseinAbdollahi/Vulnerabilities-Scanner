@@ -18,8 +18,8 @@ print(client.containers.list())
 # print(aim_network.containers)
 
 # If the network was found, print the names of all containers in it
-if client.containers is not None:
-    for container in client.containers:
+if aim_network is not None:
+    for container in aim_network.containers:
         print(container.name)
 else:
     print("Network 'monitoring_network' not found")
