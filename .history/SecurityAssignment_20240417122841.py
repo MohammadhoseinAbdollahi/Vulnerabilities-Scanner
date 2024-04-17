@@ -12,7 +12,6 @@ if aim_network is not None:
     for container in aim_network.containers:
         container_info = container.attrs
         print(container_info)
-        break
         # container_name = container_info['Name']
         # container_ipv4 = container_info['NetworkSettings']['Networks']['monitoring_network']['IPAddress']
         # print(f"Container ID: {container.id}")
