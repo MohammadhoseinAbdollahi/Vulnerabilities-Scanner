@@ -1,7 +1,4 @@
-import time
 import docker
-import subprocess
-import requests
 
 # Connect to the Docker Network
 client = docker.from_env()
@@ -40,7 +37,7 @@ for container in aim_network.containers:
     container_ipv4 = container_info['NetworkSettings']['Networks'][network_name]['IPAddress']
     service_type = container_info['Config']['Image']  # Assuming the service type is the container's image
     Ports = container_info['NetworkSettings']['Ports']
-    port = list(Ports.keys())[0].split('/')[0]
+    
 
     url = f"http://{container_ipv4}"  # Assuming the URL is the container's IP address
 
@@ -49,45 +46,20 @@ for container in aim_network.containers:
     print(f"Container Name: {container_name}")
     print(f"Container IPv4 Address: {container_ipv4}")
     print(f"URL: {url}")
-    print(f"Port: {port}")
+    print(f"Port: {Ports}")
     print(f"Service Type: {service_type}")
-    print()  
+    print()  # Add a blank line for readability
 
         # Create a dictionary with the data
     data = {
             "Container Name": container_name,
             "Container IPv4 Address": container_ipv4,
             "URL": url,
-            "Port": port,
+            "Port": Ports,
             "Service Type": service_type
         }
 
     # Add the dictionary to the list
     containers_data.append(data)
-print("Starting the vulnerability scan... ?")
-input("Press Enter to continue...")
-
-# scan the containers for vulnerabilities
-print("Scanning containers for vulnerabilities with subprocess...")
-with open("scan_result.txt", "w") as file:
-    file.write("Vulnerability Scan Results with subprocess\n")
-    file.write("==========================\n")
-for container in containers_data:
-    print(f"Scanning {container['Container Name']}...")
-    # Scan the container for vulnerabilities
-    try:
-        result = subprocess.run(['trivy', 'image', container['Service Type']], capture_output=True, text=True)
-        # Save the scan result to a text file
-        with open("subprocess_scan_result.txt", "a") as file:
-            file.write(f"Scan result for {container['Container Name']}:\n")
-            file.write(result.stdout)
-            file.write("\n")
-        print(result.stdout)
-    except Exception as e:
-        print(f"An error occurred while scanning {container['Container Name']}: {str(e)}")
     
-    print(f"{container['Container Name']} scanned successfully.")
-    print()
-    
-    
-
+# Print the list of container data

@@ -1,4 +1,3 @@
-import time
 import docker
 import subprocess
 import requests
@@ -78,7 +77,7 @@ for container in containers_data:
     try:
         result = subprocess.run(['trivy', 'image', container['Service Type']], capture_output=True, text=True)
         # Save the scan result to a text file
-        with open("subprocess_scan_result.txt", "a") as file:
+        with open("scan_result.txt", "a") as file:
             file.write(f"Scan result for {container['Container Name']}:\n")
             file.write(result.stdout)
             file.write("\n")
@@ -88,6 +87,3 @@ for container in containers_data:
     
     print(f"{container['Container Name']} scanned successfully.")
     print()
-    
-    
-

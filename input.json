@@ -1,8 +1,8 @@
 [
     {
         "Container Name": "/mysql",
-        "Container IPv4 Address": "172.20.0.2",
-        "URL": "http://172.20.0.2",
+        "Container IPv4 Address": "172.20.0.4",
+        "URL": "http://172.20.0.4",
         "Port": "3306/tcp",
         "Service Type": "mysql:latest"
     },
@@ -15,8 +15,8 @@
     },
     {
         "Container Name": "/wordpress",
-        "Container IPv4 Address": "172.20.0.4",
-        "URL": "http://172.20.0.4",
+        "Container IPv4 Address": "172.20.0.2",
+        "URL": "http://172.20.0.2",
         "Port": "80/tcp",
         "Service Type": "wordpress:latest"
     }

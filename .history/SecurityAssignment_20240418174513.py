@@ -78,7 +78,7 @@ for container in containers_data:
     try:
         result = subprocess.run(['trivy', 'image', container['Service Type']], capture_output=True, text=True)
         # Save the scan result to a text file
-        with open("subprocess_scan_result.txt", "a") as file:
+        with open("scan_result.txt", "a") as file:
             file.write(f"Scan result for {container['Container Name']}:\n")
             file.write(result.stdout)
             file.write("\n")
@@ -90,4 +90,41 @@ for container in containers_data:
     print()
     
     
+# scan the containers for vulnerabilities
+print("Scanning containers for vulnerabilities ...")
+for container in containers_data:
+    print(f"Scanning {container['Container Name']}...")
+    # Scan the container for vulnerabilities
+    try:
+        # Add the image to Anchore Engine
+        response = requests.post(f'http://localhost:8228/v1/images?force=true', json={"tag": container['Service Type']})
+        response.raise_for_status()
 
+        # Wait for the image to be analyzed
+        # This could take a while, depending on the size of the image
+        # You might want to add a progress indicator here
+        while True:
+            response = requests.get(f'http://localhost:8228/v1/images/{container["Service Type"]}')
+            response.raise_for_status()
+            status = response.json()[0]['analysis_status']
+            if status == 'analyzed':
+                break
+            elif status == 'analysis_failed':
+                raise Exception("Image analysis failed")
+            time.sleep(10)  # Wait for 10 seconds before checking the status again
+
+        # Get the vulnerabilities
+        response = requests.get(f'http://localhost:8228/v1/images/{container["Service Type"]}/vuln/all')
+        response.raise_for_status()
+        vulnerabilities = response.json()['vulnerabilities']
+
+        # Print the vulnerabilities
+        print(f"Vulnerabilities for {container['Container Name']}:")
+        for vulnerability in vulnerabilities:
+            print(f"{vulnerability['vuln']}: {vulnerability['severity']}")
+
+    except Exception as e:
+        print(f"An error occurred while scanning {container['Container Name']}: {str(e)}")
+
+    print(f"{container['Container Name']} scanned successfully.")
+    print()

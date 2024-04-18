@@ -1,7 +1,5 @@
-import time
 import docker
 import subprocess
-import requests
 
 # Connect to the Docker Network
 client = docker.from_env()
@@ -65,20 +63,18 @@ for container in aim_network.containers:
     # Add the dictionary to the list
     containers_data.append(data)
 print("Starting the vulnerability scan... ?")
-input("Press Enter to continue...")
+y = input("Press Enter to continue...")
 
 # scan the containers for vulnerabilities
 print("Scanning containers for vulnerabilities with subprocess...")
 with open("scan_result.txt", "w") as file:
-    file.write("Vulnerability Scan Results with subprocess\n")
-    file.write("==========================\n")
 for container in containers_data:
     print(f"Scanning {container['Container Name']}...")
     # Scan the container for vulnerabilities
     try:
         result = subprocess.run(['trivy', 'image', container['Service Type']], capture_output=True, text=True)
         # Save the scan result to a text file
-        with open("subprocess_scan_result.txt", "a") as file:
+        with open("scan_result.txt", "a") as file:
             file.write(f"Scan result for {container['Container Name']}:\n")
             file.write(result.stdout)
             file.write("\n")
@@ -88,6 +84,3 @@ for container in containers_data:
     
     print(f"{container['Container Name']} scanned successfully.")
     print()
-    
-    
-
