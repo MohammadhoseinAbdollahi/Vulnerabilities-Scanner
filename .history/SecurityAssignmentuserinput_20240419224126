@@ -59,7 +59,7 @@ else:
         # Use the BuiltWith API to identify the technologies used by the site
         response = requests.get(
         f"https://api.builtwith.com/free1/api.json?KEY=88f62b83-bc8d-4ac5-9aba-95fa22346760&LOOKUP={url}"
-        )
+    )
     
         # Check if the request was successful
         if response.status_code == 200:

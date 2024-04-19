@@ -1,0 +1,92 @@
+import socket
+import requests
+import json
+import nmap
+import ipaddress
+import docker
+import netifaces
+import subprocess
+
+
+def is_local(url):
+    # List of local IP address ranges
+    local_ip_ranges = [
+        '127.0.0.0/8',    # Loopback
+        '10.0.0.0/8',     # Private network
+        '172.16.0.0/12',  # Private network
+        '192.168.0.0/16', # Private network
+    ]
+
+    # Extract the IP address from the URL
+    ip = url.split('/')[0]
+
+    # Check if the IP address is in a local range
+    for range in local_ip_ranges:
+        if ipaddress.ip_address(ip) in ipaddress.ip_network(range):
+            return True
+
+    return False
+
+# Prompt the user for a URL
+url = input("Enter the URL of the site: ")
+if is_local(url):
+    print(f"The URL {url} is local.")
+    # Initialize the PortScanner object
+    nm = nmap.PortScanner()
+    printnm.all_hosts
+    # Iterate over all hosts that were up
+    for host in nm.all_hosts():
+        if nm[host].state() == "up":
+            print(f"Host : {host}")
+            print(f"Name : {nm[host].hostname()}")
+            print(f"IPv4 Address : {nm[host]['addresses']['ipv4']}")
+            
+            # Iterate over all protocols
+            for proto in nm[host].all_protocols():
+                print(f"Protocol : {proto}")
+
+                # Iterate over all ports
+                for port in nm[host][proto].keys():
+                    print(f"Port : {port}, State : {nm[host][proto][port]['state']}, Service : {nm[host][proto][port]['name']}")
+else:
+    print(f"The URL {url} is not local.")
+    # Use the BuiltWith API to identify the technologies used by the site
+    response = requests.get(
+        f"https://api.builtwith.com/free1/api.json?KEY=88f62b83-bc8d-4ac5-9aba-95fa22346760&LOOKUP={url}"
+    )
+
+    # Check if the request was successful
+    if response.status_code == 200:
+        groups = response.json()['groups']
+
+        # Initialize an empty list to store the services
+        services = []
+
+        # Write the list of technologies to a text file named after the site
+        with open(f"{url.replace('/', '_')}_services.txt", "w") as file:
+            for group in groups:
+                file.write(group['name'] + "\n")
+                services.append(group['name'])
+                for category in group['categories']:
+                    file.write("\t" + category['name'] + "\n")
+                    services.append(category['name'])
+    else:
+        print(f"Error: {response.status_code}")
+
+    # Initialize an empty list to store the vulnerabilities
+    vulnerabilities = []
+
+    # For each identified service, use the CVE Details API to get a list of known vulnerabilities
+    for service in services:
+        try:
+            response = requests.get(f"https://cve.circl.lu/api/search/{service}")
+            vulnerabilities.extend(response.json())
+        except json.JSONDecodeError:
+            print(f"No vulnerabilities found for {service} or there was an issue with the API.")
+
+    # Format the list of vulnerabilities
+    vulnerabilities_text = json.dumps(vulnerabilities, indent=4)
+
+    # Write the list to a text file named after the site
+    with open(f"{url.replace('/', '_')}_vulner.txt", "w") as file:
+        file.write(vulnerabilities_text)
