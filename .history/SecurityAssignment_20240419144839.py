@@ -5,17 +5,17 @@ import subprocess
 client = docker.from_env()
 
 # Check if Docker is running
-try:
-    containers = client.containers.list()
-except docker.errors.DockerException:
-    print("Docker is not running. Please start Docker and run this script again.")
-    exit(1)
+# try:
+#     containers = client.containers.list()
+# except docker.errors.DockerException:
+#     print("Docker is not running. Please start Docker and run this script again.")
+#     exit(1)
 
-# Get the network name from the user
-aim_network = None
-network_names = [network.name for network in client.networks.list()]
-print("Available networks:")
-print("\n".join(network_names))
+# # Get the network name from the user
+# aim_network = None
+# network_names = [network.name for network in client.networks.list()]
+# print("Available networks:")
+# print("\n".join(network_names))
 
 # If the network was not found, ask for the network name again
 while aim_network is None:

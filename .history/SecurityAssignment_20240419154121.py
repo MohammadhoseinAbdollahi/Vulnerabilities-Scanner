@@ -2,7 +2,7 @@ import docker
 import subprocess
 
 # Connect to the Docker Network
-client = docker.from_env()
+
 
 # Check if Docker is running
 try:

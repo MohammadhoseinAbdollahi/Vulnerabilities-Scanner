@@ -2,7 +2,10 @@ import docker
 import subprocess
 
 # Connect to the Docker Network
-client = docker.from_env()
+client = docker.from_env(config_dict={
+    'version': 'auto',  # Or a specific version like '1.40'
+    'timeout': 10  # Set a timeout in seconds (optional)
+})
 
 # Check if Docker is running
 try:

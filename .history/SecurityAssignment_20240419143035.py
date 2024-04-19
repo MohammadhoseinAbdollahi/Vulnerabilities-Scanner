@@ -1,3 +1,4 @@
+
 import docker
 import subprocess
 
@@ -5,33 +6,34 @@ import subprocess
 client = docker.from_env()
 
 # Check if Docker is running
-try:
-    containers = client.containers.list()
-except docker.errors.DockerException:
-    print("Docker is not running. Please start Docker and run this script again.")
-    exit(1)
 
-# Get the network name from the user
+client.containers.list()
+
+print("Docker is not running. Please start Docker and run this script again.")
+    exit(1)
 aim_network = None
-network_names = [network.name for network in client.networks.list()]
+network_names = []
 print("Available networks:")
-print("\n".join(network_names))
+for network in client.networks.list():
+    print(network.name)
+    network_names.append(network.name)
 
 # If the network was not found, ask for the network name again
 while aim_network is None:
     network_name = input("Please enter the network name: ")
-    if network_name not in network_names:
+    if(network_name not in network_names):
         print("Network not found. Please enter a valid network name.")
+        network_name = input("Please enter the network name: ")
     else:
         aim_network = client.networks.get(network_name)
         break
-
+print()
 # Create a list to store the container data
 containers_data = []
 
 # Print the containers connected to the network
 print(f"Containers in {network_name}:")
-for container in containers:
+for container in aim_network.containers:
     container_info = container.attrs
     container_name = container_info['Name']
     container_ipv4 = container_info['NetworkSettings']['Networks'][network_name]['IPAddress']
@@ -50,27 +52,25 @@ for container in containers:
     print(f"Service Type: {service_type}")
     print()  
 
-    # Create a dictionary with the data
+        # Create a dictionary with the data
     data = {
-        "Container Name": container_name,
-        "Container IPv4 Address": container_ipv4,
-        "URL": url,
-        "Port": port,
-        "Service Type": service_type
-    }
+            "Container Name": container_name,
+            "Container IPv4 Address": container_ipv4,
+            "URL": url,
+            "Port": port,
+            "Service Type": service_type
+        }
 
     # Add the dictionary to the list
     containers_data.append(data)
-
-print("Starting the vulnerability scan...")
+print("Starting the vulnerability scan... ?")
 input("Press Enter to continue...")
 
-# Scan the containers for vulnerabilities
+# scan the containers for vulnerabilities
 print("Scanning containers for vulnerabilities with subprocess...")
 with open("scan_result.txt", "w") as file:
     file.write("Vulnerability Scan Results with subprocess\n")
     file.write("==========================\n")
-
 for container in containers_data:
     print(f"Scanning {container['Container Name']}...")
     # Scan the container for vulnerabilities
@@ -87,3 +87,6 @@ for container in containers_data:
     
     print(f"{container['Container Name']} scanned successfully.")
     print()
+    
+    
+

@@ -1,11 +1,14 @@
 import docker
 import subprocess
+from docker.errors import DockerException  # Import specific exceptions
+
 
 # Connect to the Docker Network
-client = docker.from_env()
+
 
 # Check if Docker is running
 try:
+    client = docker.from_env()
     containers = client.containers.list()
 except docker.errors.DockerException:
     print("Docker is not running. Please start Docker and run this script again.")
