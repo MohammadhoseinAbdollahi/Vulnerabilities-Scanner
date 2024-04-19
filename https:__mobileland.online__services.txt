@@ -1,0 +1,51 @@
+shop
+	open-source
+	plugin-/-module
+	non-platform
+ssl
+	root-authority
+cms
+	open-source
+	blog
+javascript
+	javascript-library
+	ui
+	jquery-plugin
+	slider
+	animation
+	compatibility
+	framework
+widgets
+	fonts
+	wordpress-plugins
+	site-search
+	feedback-forms-and-surveys
+	ssl-seals
+	tag-management
+	privacy-compliance
+	captcha
+mobile
+feeds
+language
+Web Server
+mx
+hosting
+	dedicated-hosting
+	french-hosting
+	german-hosting
+	server-location
+framework
+	schema
+	wordpress-theme
+cdn
+Server
+analytics
+	application-performance
+	audience-measurement
+	visitor-count-tracking
+Web Master
+link
+payment
+	currency
+mapping
+	maps

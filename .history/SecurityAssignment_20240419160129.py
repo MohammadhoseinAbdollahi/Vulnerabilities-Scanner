@@ -2,6 +2,12 @@ import docker
 import subprocess
 import os
 
+# Access environment variables
+env_var = os.getenv("ENV_VARIABLE_NAME")
+if env_var is None:
+    print("Environment variable not found.")
+else:
+    print(f"Environment variable value: {env_var}")
 # Connect to the Docker Network
 client = docker.from_env()
 

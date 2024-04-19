@@ -1,0 +1,42 @@
+import requests
+import json
+
+# Prompt the user for a URL
+url = input("Enter the URL of the site: ")
+
+# Use the BuiltWith API to identify the technologies used by the site
+response = requests.get(
+    f"https://api.builtwith.com/free1/api.json?KEY=88f62b83-bc8d-4ac5-9aba-95fa22346760&LOOKUP={url}"
+)
+
+print(response.json())
+exit()
+# Check if the request was successful
+if response.status_code == 200:
+    technologies = response.json()['Results'][0]['Result']['Paths'][0]['Technologies']
+
+    # Write the list of technologies to a text file named after the site
+    with open(f"{url.replace('/', '_')}_services.txt", "w") as file:
+        for tech in technologies:
+            file.write(tech['Name'] + "\n")
+else:
+    print(f"Error: {response.status_code}")
+
+# Initialize an empty list to store the vulnerabilities
+vulnerabilities = []
+
+# For each identified technology, use the CVE Details API to get a list of known vulnerabilities
+for tech in technologies:
+    for tech in technologies:
+        try:
+            response = requests.get(f"https://cve.circl.lu/api/search/{tech}")
+            vulnerabilities.extend(response.json())
+        except json.JSONDecodeError:
+            print(f"No vulnerabilities found for {tech} or there was an issue with the API.")
+
+# Format the list of vulnerabilities
+vulnerabilities_text = json.dumps(vulnerabilities, indent=4)
+
+# Write the list to a text file named after the site
+with open(f"{url.replace('/', '_')}_vulner.txt", "w") as file:
+    file.write(vulnerabilities_text)

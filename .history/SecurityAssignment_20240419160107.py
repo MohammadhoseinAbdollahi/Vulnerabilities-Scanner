@@ -1,6 +1,6 @@
 import docker
 import subprocess
-import os
+
 
 # Connect to the Docker Network
 client = docker.from_env()

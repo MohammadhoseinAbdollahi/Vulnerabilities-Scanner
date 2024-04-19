@@ -1,0 +1,35 @@
+import requests
+import json
+
+# Prompt the user for a URL
+url = input("Enter the URL of the site: ")
+
+# Use the Wappalyzer API to identify the technologies used by the site
+response = requests.get(f"https://api.wappalyzer.com/lookup/v1/?url={url}")
+print(response.json())
+exit
+technologies = response.json()
+
+# Write the list of technologies to a text file named after the site
+with open(f"{url.replace('/', '_')}_services.txt", "w") as file:
+    for tech in technologies:
+        file.write(tech + "\n")
+
+# Initialize an empty list to store the vulnerabilities
+vulnerabilities = []
+
+# For each identified technology, use the CVE Details API to get a list of known vulnerabilities
+for tech in technologies:
+    for tech in technologies:
+        try:
+            response = requests.get(f"https://cve.circl.lu/api/search/{tech}")
+            vulnerabilities.extend(response.json())
+        except json.JSONDecodeError:
+            print(f"No vulnerabilities found for {tech} or there was an issue with the API.")
+
+# Format the list of vulnerabilities
+vulnerabilities_text = json.dumps(vulnerabilities, indent=4)
+
+# Write the list to a text file named after the site
+with open(f"{url.replace('/', '_')}_vulner.txt", "w") as file:
+    file.write(vulnerabilities_text)

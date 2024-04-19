@@ -1,0 +1,60 @@
+cms
+	open-source
+	blog
+analytics
+	crm
+	marketing-automation
+	application-performance
+	audience-measurement
+	visitor-count-tracking
+	conversion-optimization
+	feedback-forms-and-surveys
+javascript
+	javascript-library
+	ui
+	jquery-plugin
+	animation
+	compatibility
+	framework
+widgets
+	feedback-forms-and-surveys
+	fonts
+	wordpress-plugins
+	captcha
+	site-search
+	tag-management
+	login
+	privacy-compliance
+mobile
+feeds
+CDN
+cdn
+language
+Web Server
+framework
+	wordpress-theme
+	schema
+mx
+	dmarc
+ssl
+	root-authority
+Server
+Web Master
+link
+hosting
+	dedicated-hosting
+	german-hosting
+	persian-hosting
+	server-location
+	brazilian-hosting
+payment
+	currency
+mapping
+	maps
+ns
+shop
+	open-source
+	plugin-/-module
+	non-platform
+media
+	video-players
