@@ -49,6 +49,7 @@ else:
     response = requests.get(
         f"https://api.builtwith.com/free1/api.json?KEY=88f62b83-bc8d-4ac5-9aba-95fa22346760&LOOKUP={url}"
     )
+    response
     # Check if MySQL port (3306) is open
     if 3306 in open_ports:
         print("MySQL is running on the server.")
@@ -98,7 +99,7 @@ else:
     #         file.write(vulnerabilities_text)
 
     # Check if WordPress is installed
-    if 'wordpress-plugins' in response.json():
+    if 'wordpress' in response.json():
         print("WordPress is installed on the site.")  
         api_url = 'https://wpscan.com/api/v3/wordpresses/494'
         api_token = 'oIyzlOry8Md0TCSV2WWDSffVprwszrA04jrp4DKWHVc'  # replace with your actual API token

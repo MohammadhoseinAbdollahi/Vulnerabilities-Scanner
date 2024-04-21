@@ -1,0 +1,39 @@
+import requests
+import socket
+
+# Function to perform web scraping
+def scrape_website(url):
+    try:
+        response = requests.get(url)
+        if response.status_code == 200:
+            print("Website is accessible.")
+            # Add your scraping logic here
+        else:
+            print("Failed to access website. Status code:", response.status_code)
+    except requests.exceptions.RequestException as e:
+        print("Error accessing website:", e)
+
+# Function to perform port scanning
+def scan_ports(hostname):
+    try:
+        ip_address = socket.gethostbyname(hostname)
+        for port in range(1, 1025):  # Scan common ports
+            sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            result = sock.connect_ex((ip_address, port))
+            if result == 0:
+                print("Port {} is open".format(port))
+            sock.close()
+    except socket.gaierror:
+        print("Hostname could not be resolved.")
+    except socket.error as e:
+        print("Error occurred while scanning ports:", e)
+
+# Example usage
+website_url = "https://mobileland.online/"
+hostname = "mobile"
+
+# Scrape website
+scrape_website(website_url)
+
+# Scan ports
+scan_ports(hostname)

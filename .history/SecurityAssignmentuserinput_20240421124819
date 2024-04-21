@@ -98,7 +98,7 @@ else:
     #         file.write(vulnerabilities_text)
 
     # Check if WordPress is installed
-    if 'wordpress-plugins' in response.json():
+    if 'wordpress' in response.json():
         print("WordPress is installed on the site.")  
         api_url = 'https://wpscan.com/api/v3/wordpresses/494'
         api_token = 'oIyzlOry8Md0TCSV2WWDSffVprwszrA04jrp4DKWHVc'  # replace with your actual API token

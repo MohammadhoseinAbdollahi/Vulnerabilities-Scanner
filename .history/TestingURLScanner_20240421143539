@@ -1,0 +1,54 @@
+import requests
+import socket
+import re
+
+# Function to perform web scraping
+def scrape_website(url):
+    try:
+        response = requests.get(url)
+        if response.status_code == 200:
+            print("Website is accessible.")
+            # Add your scraping logic here
+        else:
+            print("Failed to access website. Status code:", response.status_code)
+    except requests.exceptions.RequestException as e:
+        print("Error accessing website:", e)
+
+def identify_services(url):
+    try:
+        response = requests.get(url)
+        if response.status_code == 200:
+            headers = response.headers
+            server_header = headers.get('Server', '')
+            
+            if 'Apache' in server_header:
+                print("Apache server detected")
+                version = re.search(r'Apache/(\d+\.\d+\.\d+)', server_header)
+                if version:
+                    print("Apache version:", version.group(1))
+                else:
+                    print("Unable to determine Apache version")
+            if 'WordPress' in response.text:
+                print("WordPress detected")
+                version = re.search(r'WordPress (\d+\.\d+\.\d+)', response.text)
+                if version:
+                    print("WordPress version:", version.group(1))
+                else:
+                    print("Unable to determine WordPress version")
+            # You can add additional checks for other services
+        else:
+            print("Failed to access website. Status code:", response.status_code)
+    except requests.exceptions.RequestException as e:
+        print("Error accessing website:", e)
+
+# Example usage
+website_url = "https://mobileland.online/"
+hostname = "mobileland.online"
+
+# Scrape website
+scrape_website(website_url)
+
+
+
+# Identify services
+identify_services(website_url)
