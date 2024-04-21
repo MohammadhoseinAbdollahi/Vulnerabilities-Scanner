@@ -1,0 +1,46 @@
+from vulners import Vulners
+import requests
+
+def search_vulnerabilities(service_name, service_version,api_key):
+    vulners_api = Vulners(api_key)
+
+    # Search for vulnerabilities related to the service name and version
+    vulnerabilities = vulners_api.softwareVulnerabilities(service_name, service_version)
+
+    return vulnerabilities
+
+def display_vulnerabilities_MySQL_Apache(vulnerabilities):
+    if vulnerabilities:
+        print("Vulnerabilities found:")
+        for cve_id, vulnerability_list in vulnerabilities.items():
+            for vulnerability in vulnerability_list:
+                print("- CVE ID:", cve_id)
+                print("  Description:", vulnerability.get('description'))
+                print("  CVSS Score:", vulnerability.get('cvss', {}).get('score'))
+                print()  # Add a blank line for readability
+    else:
+        print("No vulnerabilities found.")
+
+# Example usage
+api_key = "BVM7XHOM569FOS926JD3G78BHVTSJTSM6N6EZM3AWLYW3NVH5ZIM6SYO0DX67RIL"
+service_name = "MySQL"
+service_version = "5.7.33"  # Example version
+#vulnerabilities = search_vulnerabilities(service_name, service_version,api_key)
+#display_vulnerabilities_MySQL_Apache(vulnerabilities)
+
+
+import subprocess
+
+def run_wpscan(version):
+    api_url = f'https://wpscan.com/api/v3/wordpresses/{version}'
+    api_token = 'oIyzlOry8Md0TCSV2WWDSffVprwszrA04jrp4DKWHVc'  # replace with your actual API token
+
+    headers = {"Authorization": f"Token token={api_token}"}
+
+    response = requests.get(api_url, headers=headers)
+    vulnerabilities = response.json()['vulnerabilities']
+    for vulnerability in vulnerabilities:
+        print(vulnerability)
+
+# Example usage
+run_wpscan("5.7.2")
