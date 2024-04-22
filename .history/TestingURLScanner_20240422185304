@@ -18,7 +18,6 @@ def detect_mysql(url):
             print("Failed to access website. Status code:", response.status_code)
     except requests.exceptions.RequestException as e:
         print("Error accessing website:", e)
-        
 def extract_mysql_version(response_text):
     # Regular expression pattern to match MySQL version numbers
     pattern = r'\b\d+\.\d+\.\d+\b'  # Matches version numbers like 5.7.33

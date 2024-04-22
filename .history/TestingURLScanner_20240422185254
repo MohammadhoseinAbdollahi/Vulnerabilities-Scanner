@@ -1,24 +1,6 @@
 import requests
 import socket
 import re
-def detect_mysql(url):
-    try:
-        response = requests.get(url)
-        if response.status_code == 200:
-            # Look for common MySQL error messages in the response content
-            if 'SQL syntax' in response.text:
-                print("MySQL may be in use (SQL syntax error detected)")
-            # Check if the website uses PHP which often integrates with MySQL
-            elif '.php' in response.text:
-                print("PHP found, MySQL may be in use")
-            # You can add more specific checks if necessary
-            else:
-                print("No clear indication of MySQL usage")
-        else:
-            print("Failed to access website. Status code:", response.status_code)
-    except requests.exceptions.RequestException as e:
-        print("Error accessing website:", e)
-        
 def extract_mysql_version(response_text):
     # Regular expression pattern to match MySQL version numbers
     pattern = r'\b\d+\.\d+\.\d+\b'  # Matches version numbers like 5.7.33
