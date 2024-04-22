@@ -26,8 +26,8 @@ def display_vulnerabilities_MySQL_Apache(vulnerabilities):
 api_key = "BVM7XHOM569FOS926JD3G78BHVTSJTSM6N6EZM3AWLYW3NVH5ZIM6SYO0DX67RIL"
 service_name = "MySQL"
 service_version = "5.7.33"  # Example version
-vulnerabilities = search_vulnerabilities(service_name, service_version,api_key)
-display_vulnerabilities_MySQL_Apache(vulnerabilities)
+#vulnerabilities = search_vulnerabilities(service_name, service_version,api_key)
+#display_vulnerabilities_MySQL_Apache(vulnerabilities)
 
 
 import subprocess
@@ -62,8 +62,8 @@ def wpscan_version(site_url, api_token):
         print(f"An error occurred: {e}")
 
 # Example usage
-site_url = "http://localhost/sitevul/"
-api_token = 'bzGYb0wY5MIwW05sbtXbZDWqVxUtn4xV12gGgQmMUGg'
+site_url = "https://mobileland.online/"
+api_token = 'A3lG2aGXUNk7W6pt1pWmKQVs874YBIakj5DajBO2Ftw'
 
 #run_wpscan_plugins(site_url,api_token)
 wpscan_version(site_url,api_token)

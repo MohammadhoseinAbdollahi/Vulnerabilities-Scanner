@@ -27,7 +27,7 @@ api_key = "BVM7XHOM569FOS926JD3G78BHVTSJTSM6N6EZM3AWLYW3NVH5ZIM6SYO0DX67RIL"
 service_name = "MySQL"
 service_version = "5.7.33"  # Example version
 vulnerabilities = search_vulnerabilities(service_name, service_version,api_key)
-display_vulnerabilities_MySQL_Apache(vulnerabilities)
+#display_vulnerabilities_MySQL_Apache(vulnerabilities)
 
 
 import subprocess
