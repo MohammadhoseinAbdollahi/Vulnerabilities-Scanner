@@ -1,0 +1,49 @@
+import subprocess
+import json
+def get_image_name_from_container(container_name):
+    command = ["docker", "inspect", container_name]
+    process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    stdout, stderr = process.communicate()
+
+    if process.returncode != 0:
+        print(f"Failed to inspect container: {stderr.decode()}")
+        return None
+
+    data = json.loads(stdout.decode())
+    return data[0]['Config']['Image']
+
+def get_containers_in_network(network_name):
+    command = ["docker", "network", "inspect", network_name]
+    process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    stdout, stderr = process.communicate()
+
+    if process.returncode != 0:
+        print(f"Failed to inspect network: {stderr.decode()}")
+        return []
+
+    data = json.loads(stdout.decode())
+    return [container['Name'] for container in data[0]['Containers'].values()]
+
+def scan_container_with_trivy(container_name):
+    command = ["docker", "images", "-q", container_name]
+    process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    stdout, stderr = process.communicate()
+
+    if process.returncode != 0 or not stdout:
+        print(f"Docker image {container_name} not found")
+        return
+
+    command = ["trivy", "image", "--output", f"{container_name}_vul.txt", container_name]
+    process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    stdout, stderr = process.communicate()
+
+    if process.returncode != 0:
+        print(f"Failed to scan container: {stderr.decode()}")
+
+# Example usage
+network_name = "monitoring_network_vul"  # Replace with your actual network name
+containers = get_containers_in_network(network_name)
+print(f"Containers in network {network_name}: {containers}")
+for container in containers:
+    =get_image_name_from_container(container)
+    scan_container_with_trivy(container)

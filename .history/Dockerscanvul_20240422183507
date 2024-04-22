@@ -1,0 +1,34 @@
+import subprocess
+import json
+
+def get_containers_in_network(network_name):
+    command = ["docker", "network", "inspect", network_name]
+    process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    stdout, stderr = process.communicate()
+
+    if process.returncode != 0:
+        print(f"Failed to inspect network: {stderr.decode()}")
+        return []
+
+    data = json.loads(stdout.decode())
+    return [container['Name'] for container in data[0]['Containers'].values()]
+
+def scan_container_with_trivy(container_name):
+    command = ["trivy", "image", "--output", f"{container_name}_vul.txt", container_name]
+    process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    stdout, stderr = process.communicate()
+
+    if process.returncode != 0:
+        print(f"Failed to scan container: {stderr.decode()}")
+
+# Example usage
+network_name = "monitoring_network_vul"  # Replace with your actual network name
+containers = get_containers_in_network(network_name)
+print(f"Containers in network {network_name}: {containers}")
+# containers.remove("apache")
+# print(f"Containers in network {network_name}: {containers}")
+for container in containers:
+    if(container == 'apache'):
+        scan_container_with_trivy
+
+    scan_container_with_trivy(container)
