@@ -1,0 +1,32 @@
+import requests
+from bs4 import BeautifulSoup
+
+def analyze_website(url):
+    response = requests.get(url)
+    soup = BeautifulSoup(response.content, 'html.parser')
+
+    # Identify CMS version
+    cms_version = extract_cms_version(soup)
+
+    # Print the identified CMS version
+    print("CMS Version:", cms_version)
+
+def extract_cms_version(soup):
+    # Example: Search for CMS version in meta tags
+    meta_tags = soup.find_all('meta')
+    for meta in meta_tags:
+        name = meta.get('name')
+        content = meta.get('content')
+        if name and content and name.lower() == "generator":
+            if "wordpress" in content.lower():
+                return "WordPress"  # Assuming WordPress CMS
+            # Add more conditions for other CMS platforms
+
+    # If version not found in meta tags, search in other areas of the HTML
+    # Additional checks can be added based on where version information is typically located in the HTML
+
+    return "CMS version not found"  # Default if version not found
+
+# Example usage
+url = "https://example.com"
+analyze_website(url)

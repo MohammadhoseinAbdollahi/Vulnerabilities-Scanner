@@ -81,7 +81,7 @@ def identify_services(url):
         print("Error accessing website:", e)
 
 # Example usage
-website_url = "http://localhost/sitevul/"
+website_url = "https://mobileland.online/"
 
 
 # Scrape website

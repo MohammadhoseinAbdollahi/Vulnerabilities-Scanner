@@ -54,6 +54,8 @@ def identify_services(url):
             else:
                 print("No clear indication of MySQL usage")
             # Check for MySQL version
+            print(response.text)
+            exit()
             version = extract_mysql_version(response.text)
             if version:
                 print("MySQL version:", version)
@@ -81,7 +83,7 @@ def identify_services(url):
         print("Error accessing website:", e)
 
 # Example usage
-website_url = "http://localhost/sitevul/"
+website_url = "https://mobileland.online/"
 
 
 # Scrape website

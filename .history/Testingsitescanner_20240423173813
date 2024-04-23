@@ -1,0 +1,70 @@
+import requests
+from bs4 import BeautifulSoup
+import csv
+
+def fetch_html(url):
+    try:
+        response = requests.get(url)
+        response.raise_for_status()
+        return response.text
+    except requests.RequestException as e:
+        print(f"Error fetching HTML: {e}")
+        return None
+
+def extract_frontend_technologies(html):
+    technologies = set()
+    if html is None:
+        return technologies
+
+    soup = BeautifulSoup(html, 'html.parser')
+
+    # Example: Extracting JavaScript libraries using script tags
+    script_tags = soup.find_all('script', src=True)
+    for script_tag in script_tags:
+        src = script_tag['src']
+        if 'jquery' in src:
+            technologies.add(('jQuery', ''))
+        elif 'react' in src:
+            technologies.add(('React', ''))
+
+    # Example: Extracting CMS using meta tags
+    meta_generator_tag = soup.find('meta', attrs={'name': 'generator'})
+    if meta_generator_tag:
+        content = meta_generator_tag.get('content', '')
+        if 'WordPress' in content:
+            technologies.add(('WordPress', ''))
+
+    return technologies
+
+def load_compatibility_table(file_path):
+    compatibility_table = {}
+    with open(file_path, 'r') as file:
+        reader = csv.reader(file)
+        next(reader)  # Skip the header row
+        for row in reader:
+            cms_version, db_tech, db_version = row
+            compatibility_table[cms_version] = (db_tech, db_version)
+    return compatibility_table
+
+def detect_database_technology(url, compatibility_table):
+    html = fetch_html(url)
+    if html:
+        frontend_technologies = extract_frontend_technologies(html)
+        for tech, version in frontend_technologies:
+            if tech == 'WordPress':
+                return compatibility_table.get(version, ('Unknown', 'Unknown'))
+    return ('Unknown', 'Unknown')
+    
+
+# Example usage
+url = "https://www.vatanzarin.com/"
+html = fetch_html(url)
+if html:
+    frontend_technologies = extract_frontend_technologies(html)
+    database_technology = detect_database_technology(url)
+    print("Detected frontend technologies:")
+    for tech, version in frontend_technologies:
+        print(f"{tech}: {version}")
+    print(f"Detected database technology: {database_technology}")
+compatibility_table = load_compatibility_table("compatibility table.csv")
+database_technology, database_version = detect_database_technology(url, compatibility_table)

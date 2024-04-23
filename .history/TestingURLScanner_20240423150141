@@ -4,6 +4,8 @@ import re
 def detect_mysql(url):
     try:
         response = requests.get(url)
+        print(response.text)
+        exit()
         if response.status_code == 200:
             # Look for common MySQL error messages in the response content
             if 'SQL syntax' in response.text or 'MySQL' in response.text:
@@ -81,7 +83,7 @@ def identify_services(url):
         print("Error accessing website:", e)
 
 # Example usage
-website_url = "http://localhost/sitevul/"
+website_url = "https://mobileland.online/"
 
 
 # Scrape website

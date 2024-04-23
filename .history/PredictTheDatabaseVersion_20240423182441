@@ -1,0 +1,14 @@
+import csv
+
+def guess_database_version(cms_version):
+    with open('compatiblity_table.csv', 'r') as file:
+        reader = csv.reader(file)
+        for row in reader:
+            if row[0] == cms_version:
+                return row[1]
+    return "Unknown"
+
+# Replace 'cms_version' with the actual CMS version you have
+cms_version = 'CMS 6.5'
+database_version = guess_database_version(cms_version)
+print(f"The database version for CMS version {cms_version} is {database_version}.")

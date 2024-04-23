@@ -1,0 +1,22 @@
+import requests
+
+def scan_url_with_builtwith(domain):
+    api_key = "88f62b83-bc8d-4ac5-9aba-95fa22346760"
+    api_url = f"https://api.builtwith.com/free1/api.json?KEY={api_key}&LOOKUP={domain}"
+
+    response = requests.get(api_url)
+
+    if response.status_code != 200:
+        print(f"Failed to scan URL: {response.text}")
+        return
+    data = response.json()
+    return data
+def extraxt_technologies(data):
+    technologies = data["Results"][0]["Paths"]
+    return technologies
+
+# Example usage
+domain = "https://www.vatanzarin.com/"  # Replace with the domain you want to scan
+data = scan_url_with_builtwith(domain)
+technolo
+print(data)

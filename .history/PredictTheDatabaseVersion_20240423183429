@@ -1,0 +1,26 @@
+import csv
+
+def guess_database_version(cms_version):
+    with open('compatiblity_table.csv', 'r') as file:
+        reader = csv.reader(file)
+        header = next(reader)  # Get the header row
+        if cms_version not in header:
+            return "Unknown CMS version"
+
+        cms_index = header.index(cms_version)  # Get the index of the CMS version in the header
+        compatible_databases = []
+        database_compatibility_counts = {}
+        for row in reader:
+            if row[cms_index] == '1':  # Check if the database is compatible
+                database_compatibility_counts[row[0]] = database_compatibility_counts.get(row[0], 0) + 1
+    return most_compatible_database if most_compatible_database else "No compatible databases found"
+    most_compatible_database = max(database_compatibility_counts, key=database_compatibility_counts.get)
+                compatible_databases.append(row[0])  # Add the database name to the list
+
+    return compatible_databases if compatible_databases else "No compatible databases found"
+
+most_compatible_database = guess_database_version(cms_version)
+
+  print(f"The most compatible database for CMS version {cms_version} is {most_compatible_database}.")cms_version = 'CMS 6.5'
+compatible_databases = guess_database_version(cms_version)
+print(f"The compatible databases for CMS version {cms_version} are {compatible_databases}.")

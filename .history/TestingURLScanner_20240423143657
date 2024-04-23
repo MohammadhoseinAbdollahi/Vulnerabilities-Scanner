@@ -6,7 +6,7 @@ def detect_mysql(url):
         response = requests.get(url)
         if response.status_code == 200:
             # Look for common MySQL error messages in the response content
-            if 'SQL syntax' in response.text or 'MySQL' in response.text:
+            if 'SQL syntax' in response.text:
                 print("MySQL may be in use (SQL syntax error detected)")
             # Check if the website uses PHP which often integrates with MySQL
             elif '.php' in response.text:
@@ -44,6 +44,7 @@ def identify_services(url):
         if response.status_code == 200:
             headers = response.headers
             server_header = headers.get('Server', '')
+            print(server_header)
             print("Server header:", server_header)
             if 'SQL syntax' in response.text:
                 print("MySQL may be in use (SQL syntax error detected)")
@@ -81,7 +82,7 @@ def identify_services(url):
         print("Error accessing website:", e)
 
 # Example usage
-website_url = "http://localhost/sitevul/"
+website_url = "https://www.vatanzarin.com/"
 
 
 # Scrape website

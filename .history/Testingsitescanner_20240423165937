@@ -1,0 +1,70 @@
+import requests
+from bs4 import BeautifulSoup
+
+def fetch_html(url):
+    try:
+        response = requests.get(url)
+        response.raise_for_status()
+        return response.text
+    except requests.RequestException as e:
+        print(f"Error fetching HTML: {e}")
+        return None
+
+def extract_frontend_technologies(html):
+    technologies = set()
+    if html is None:
+        return technologies
+
+    soup = BeautifulSoup(html, 'html.parser')
+
+    # Example: Extracting JavaScript libraries using script tags
+    script_tags = soup.find_all('script', src=True)
+    for script_tag in script_tags:
+        src = script_tag['src']
+        if 'jquery' in src:
+            technologies.add(('jQuery', ''))
+        elif 'react' in src:
+            technologies.add(('React', ''))
+
+    # Example: Extracting CMS using meta tags
+    meta_generator_tag = soup.find('meta', attrs={'name': 'generator'})
+    if meta_generator_tag:
+        content = meta_generator_tag.get('content', '')
+        if 'WordPress' in content:
+            technologies.add(('WordPress', ''))
+
+    return technologies
+
+def detect_database_technology(url):
+    # Placeholder function for detecting database technology
+    # Here you could implement various heuristics or checks
+    # such as inspecting URLs, response headers, or specific HTML elements
+    # to make an educated guess about the database technology used.
+    # For demonstration purposes, let's assume we're detecting MySQL.
+    soup = BeautifulSoup(html, 'html.parser')
+
+    # Example: Look for MySQL-specific keywords in the HTML
+    if 'mysql' in html.lower():
+        return 'MySQL'
+
+    # Example: Look for specific meta tags or comments indicating the database technology
+    meta_db_tag = soup.find('meta', attrs={'name': 'generator', 'content': 'MySQL'})
+    if meta_db_tag:
+        return 'MySQL'
+
+    # Add more checks based on your knowledge of common database technologies and their characteristics
+
+    # If no specific clues are found, return a default value
+    return 'Unknown'
+    
+
+# Example usage
+url = "https://example.com"
+html = fetch_html(url)
+if html:
+    frontend_technologies = extract_frontend_technologies(html)
+    database_technology = detect_database_technology(url)
+    print("Detected frontend technologies:")
+    for tech, version in frontend_technologies:
+        print(f"{tech}: {version}")
+    print(f"Detected database technology: {database_technology}")
