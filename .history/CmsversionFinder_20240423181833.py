@@ -2,7 +2,6 @@ import requests
 from bs4 import BeautifulSoup
 from bs4.element import Comment
 import re
-from PredictTheDatabaseVersion import Database_finder
 
 def extract_cms_version(url):
     cms_versions = []
@@ -38,7 +37,7 @@ def extract_cms_version(url):
                     cms_versions.append(version.group(1))
 
             # Approach 5: Check for specific text patterns in the HTML structure
-            specific_text_pattern = soup.find(string=re.compile(r'Wordpress Version: \d+\.\d+(\.\d+)?'))
+            specific_text_pattern = soup.find(text=re.compile(r'Wordpress Version: \d+\.\d+(\.\d+)?'))
             if specific_text_pattern:
                 version_text = specific_text_pattern.strip()
                 version = re.search(r'(\d+\.\d+(\.\d+)?)', version_text)
@@ -51,21 +50,11 @@ def extract_cms_version(url):
         print(f"Error: {e}")
     
     return cms_versions
-url = "https://mobileland.online"
 
-
-
-def DetectCMSVersion(url):
-    versions = extract_cms_version(url)
-    if versions:
-        s = versions[0]
-        s = s.replace('WordPress: ', '')  # Remove 'WordPress: ' from the string
-        version = s.split(".")[0:2]  # Split the string on "." and take the first two parts
-        version = ".".join(version)  # Join the parts back together with "."
-        s = f"CMS {version}"  # Format the string with "CMS" at the start
-        s = s.replace('WordPress ', '')  # Remove 'WordPress ' from the string
-        Database = Database_finder(s)
-        print(Database)
-        return Database
-    else:
-        print("Could not detect CMS versions.")
+# Example usage
+url = 'https://www.vatanzarin.com/'
+versions = extract_cms_version(url)
+if versions:
+    print(f"Detected CMS versions: {versions}")
+else:
+    print("Could not detect CMS versions.")

@@ -2,7 +2,6 @@ import requests
 from bs4 import BeautifulSoup
 from bs4.element import Comment
 import re
-from PredictTheDatabaseVersion import Database_finder
 
 def extract_cms_version(url):
     cms_versions = []
@@ -58,14 +57,15 @@ url = "https://mobileland.online"
 def DetectCMSVersion(url):
     versions = extract_cms_version(url)
     if versions:
+        if 'WordPress' in versions:
+            del versions['WordPress']  # Delete 'WordPress' from the dictionary
         s = versions[0]
-        s = s.replace('WordPress: ', '')  # Remove 'WordPress: ' from the string
-        version = s.split(".")[0:2]  # Split the string on "." and take the first two parts
+        version = s.split(": ")[0]  # Split the string on ": " and take the second part
+        del version[version]
+        version = version.split(".")[0:2]  # Split the version on "." and take the first two parts
         version = ".".join(version)  # Join the parts back together with "."
-        s = f"CMS {version}"  # Format the string with "CMS" at the start
-        s = s.replace('WordPress ', '')  # Remove 'WordPress ' from the string
-        Database = Database_finder(s)
-        print(Database)
-        return Database
+        s = f"CMS {s.split(': ')[0]}: {version}"  # Format the string with "CMS" at the start
+        print(s)    
     else:
         print("Could not detect CMS versions.")
+DetectCMSVersion(url)

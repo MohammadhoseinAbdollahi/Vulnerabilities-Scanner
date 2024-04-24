@@ -33,7 +33,7 @@ def find_most_compatible_database(databases_to_consider):
 
 
 # Replace 'cms_version' with the actual CMS version you have
-def Database_finder(cms_version):
-    compatible_databases = guess_database_version(cms_version)
-    the_one = find_most_compatible_database(compatible_databases)
-    return the_one
+cms_version = 'CMS 7'
+compatible_databases = guess_database_version(cms_version)
+the_one = find_most_compatible_database(compatible_databases)
+print(f"The compatible databases for CMS version {cms_version} are {the_one}.")

@@ -73,7 +73,6 @@ def Scan_tech(url):
     if html:
         frontend_technologies = extract_frontend_technologies(html,url)
         database = DetectCMSVersion(url)
-        
         print("Detected frontend technologies:")
         for tech, version in frontend_technologies:
             print(f"{tech}: {version}")

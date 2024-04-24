@@ -73,7 +73,14 @@ def Scan_tech(url):
     if html:
         frontend_technologies = extract_frontend_technologies(html,url)
         database = DetectCMSVersion(url)
-        
         print("Detected frontend technologies:")
         for tech, version in frontend_technologies:
             print(f"{tech}: {version}")
+url = "https://www.vatanzarin.com/"
+html = fetch_html(url)
+if html:
+    frontend_technologies = extract_frontend_technologies(html,url)
+    cms_versions = DetectCMSVersion(url)
+    print("Detected frontend technologies:")
+    for tech, version in frontend_technologies:
+        print(f"{tech}: {version}")

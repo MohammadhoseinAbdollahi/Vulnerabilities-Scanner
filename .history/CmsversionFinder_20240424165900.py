@@ -65,7 +65,7 @@ def DetectCMSVersion(url):
         s = f"CMS {version}"  # Format the string with "CMS" at the start
         s = s.replace('WordPress ', '')  # Remove 'WordPress ' from the string
         Database = Database_finder(s)
-        print(Database)
-        return Database
+           
     else:
         print("Could not detect CMS versions.")
+DetectCMSVersion(url)

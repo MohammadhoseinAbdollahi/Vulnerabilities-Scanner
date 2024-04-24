@@ -1,9 +1,7 @@
-
 import requests
 from bs4 import BeautifulSoup
-from bs4.element import Comment
 import re
-from CmsversionFinder import DetectCMSVersion
+from CmsversionFinder import extract_cms_version
 def fetch_html(url):
     try:
         response = requests.get(url)
@@ -13,7 +11,7 @@ def fetch_html(url):
         print(f"Unable to fetch HTML from {url}")
         return None
 
-def extract_frontend_technologies(html,url):
+def extract_frontend_technologies(html):
     technologies = set()
     if html is None:
         return technologies
@@ -56,24 +54,15 @@ def extract_frontend_technologies(html,url):
             elif 'foundation' in href:
                 version = re.findall(r'foundation-([0-9\.]+)', href)
                 technologies.add(('Foundation', version[0] if version else ''))
-    # Extracting other frontend technologies using comments
-    comments = soup.find_all(string=lambda text: isinstance(text, Comment))
-    for comment in comments:
-        if 'AngularJS' in comment:
-            version = re.findall(r'AngularJS ([0-9\.]+)', comment)
-            technologies.add(('AngularJS', version[0] if version else ''))
-        elif 'Vue.js' in comment:
-            version = re.findall(r'Vue.js ([0-9\.]+)', comment)
-            technologies.add(('Vue.js', version[0] if version else ''))
+
     return technologies
 
 # Example usage
-def Scan_tech(url):
-    html = fetch_html(url)
-    if html:
-        frontend_technologies = extract_frontend_technologies(html,url)
-        database = DetectCMSVersion(url)
-        
-        print("Detected frontend technologies:")
-        for tech, version in frontend_technologies:
-            print(f"{tech}: {version}")
+url = "https://www.vatanzarin.com/"
+html = fetch_html(url)
+if html:
+    frontend_technologies = extract_frontend_technologies(html)
+    
+    print("Detected frontend technologies:")
+    for tech, version in frontend_technologies:
+        print(f"{tech}: {version}")

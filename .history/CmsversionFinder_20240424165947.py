@@ -69,3 +69,4 @@ def DetectCMSVersion(url):
         return Database
     else:
         print("Could not detect CMS versions.")
+DetectCMSVersion(url)
