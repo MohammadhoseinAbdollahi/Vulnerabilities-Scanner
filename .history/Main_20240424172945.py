@@ -57,7 +57,7 @@ def main():
         services = LocalhostServiceScanner(url)
         identify_vulnerabilities(services, url)
         print("Scanning completed!")
-        print("But, If you want to see what is inside site prees 1 else press 2")
+        print("But, If you want to see what is inside container prees 1 else press 2")
         choice = input("Enter your choice (1-2): ")
         if choice == "1":
             print("wait for this part")
@@ -75,9 +75,6 @@ def main():
         url = input("Enter the URL: ")
         technologies = Scan_tech(url)
         identify_vulnerabilities(technologies,url)
-        print("Scanning completed!")
-        input("Press Enter to back menu...")
-        main()
         
     elif choice == "4":
         os.system("cat README.md")

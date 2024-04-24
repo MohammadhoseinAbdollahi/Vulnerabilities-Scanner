@@ -36,7 +36,7 @@ def main():
             print(f"Network {network_name} does not exist. Please try again.")
             main()
         DockerScanner(network_name)
-        print("Scanning completed!")
+        
         print("Please check the generated PDF files for the scan results.")
         print("But, If you want to see what is inside container prees 1 else press 2")
         choice = input("Enter your choice (1-2): ")
@@ -56,16 +56,6 @@ def main():
             main()
         services = LocalhostServiceScanner(url)
         identify_vulnerabilities(services, url)
-        print("Scanning completed!")
-        print("But, If you want to see what is inside site prees 1 else press 2")
-        choice = input("Enter your choice (1-2): ")
-        if choice == "1":
-            print("wait for this part")
-            print()
-            main()
-        else:
-            print("ok")
-            main()
 
     elif choice == "3":
         # Check if the URL is valid
@@ -75,9 +65,6 @@ def main():
         url = input("Enter the URL: ")
         technologies = Scan_tech(url)
         identify_vulnerabilities(technologies,url)
-        print("Scanning completed!")
-        input("Press Enter to back menu...")
-        main()
         
     elif choice == "4":
         os.system("cat README.md")

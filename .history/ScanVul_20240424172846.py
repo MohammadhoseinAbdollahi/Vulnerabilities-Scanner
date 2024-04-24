@@ -68,10 +68,8 @@ def identify_vulnerabilities(services, site_url):
     for service in services:
         service_name = service.get('name')
         service_version = service.get('version')
-        if(service_name == "WordPress"):
-            run_wpscan_plugins(site_url,api_token_wpscan)
-            wpscan_version(site_url,api_token_wpscan)
-        else:
+        
+        if(service_name == "MySQL" or service_name == "Apache"):
             vulnerabilities = search_vulnerabilities(service_name, service_version,api_key_Mysql_apache)
             display_vulnerabilities_MySQL_Apache(vulnerabilities)
         

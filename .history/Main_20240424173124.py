@@ -76,8 +76,7 @@ def main():
         technologies = Scan_tech(url)
         identify_vulnerabilities(technologies,url)
         print("Scanning completed!")
-        input("Press Enter to back menu...")
-        main()
+        input("Press Enter to Continue...")
         
     elif choice == "4":
         os.system("cat README.md")
