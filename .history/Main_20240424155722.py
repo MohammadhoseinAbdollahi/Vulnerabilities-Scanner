@@ -1,6 +1,5 @@
 # This is the main file that will be executed to run the scanning program.
 import os
-import subprocess
 from Dockerscanvul import DockerScanner
 from TestingURLScanner import LocalhostServiceScanner
 from ScanVul import identify_vulnerabilities
@@ -10,10 +9,10 @@ def main():
     print("1. Docker")
     print("2. Localhosts")
     print("3. Websites")
-    print("4. Open README.md file")
+    pr
     print("5. Exit")
 
-    choice = input("Enter your choice (1-5): ")
+    choice = input("Enter your choice (1-3): ")
 
     if choice == "1":
         # Check if docker is installed
@@ -25,15 +24,14 @@ def main():
         if os.system("trivy --version") != 0:
             print("Trivy is not installed. Please install Trivy and try again.")
             main()
-        # Show all networks
-        subprocess.run(["docker", "network", "ls"])
-        print()
+            
         network_name = input("Enter the network name: ")
         # check if network exists
         if os.system(f"docker network inspect {network_name}") != 0:
             print(f"Network {network_name} does not exist. Please try again.")
             main()
-        scanner = DockerScanner(network_name)
+        scanner = DockerScanner()
+        scanner.DockerScanner(network_name)
         print("Scanning completed!")
         print("Please check the generated PDF files for the scan results.")
         print("But, If you want to see what is inside container prees 1 else press 2")
@@ -53,7 +51,7 @@ def main():
             print("Invalid URL. Please enter a valid URL starting with 'http://' or 'https://'.")
             main()
         scanner = LocalhostServiceScanner()
-        services = scanner(url)
+        services = scanner.LocalhostServiceScanner(url)
         scanner = identify_vulnerabilities()
         scanner.identify_vulnerabilities(services, url)
 
@@ -61,9 +59,6 @@ def main():
         url = input("Enter the URL: ")
         # TODO: Perform scanning on the specified website using the provided URL
     elif choice == "4":
-        os.system("cat README.md")
-        main()
-    elif choice == "5":
         print("Exiting the program. Goodbye!")
         return
 

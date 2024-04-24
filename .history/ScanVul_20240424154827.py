@@ -1,13 +1,13 @@
 from vulners import Vulners
-import subprocess
-
-api_key_Mysql_apache = "BVM7XHOM569FOS926JD3G78BHVTSJTSM6N6EZM3AWLYW3NVH5ZIM6SYO0DX67RIL"
-api_token_wpscan = 'bzGYb0wY5MIwW05sbtXbZDWqVxUtn4xV12gGgQmMUGg'
+import json
+import requests
 
 def search_vulnerabilities(service_name, service_version,api_key):
     vulners_api = Vulners(api_key)
+
     # Search for vulnerabilities related to the service name and version
     vulnerabilities = vulners_api.softwareVulnerabilities(service_name, service_version)
+
     return vulnerabilities
 
 def display_vulnerabilities_MySQL_Apache(vulnerabilities):
@@ -22,7 +22,15 @@ def display_vulnerabilities_MySQL_Apache(vulnerabilities):
     else:
         print("No vulnerabilities found.")
 
+# Example usage
+api_key = "BVM7XHOM569FOS926JD3G78BHVTSJTSM6N6EZM3AWLYW3NVH5ZIM6SYO0DX67RIL"
+service_name = "MySQL"
+service_version = "5.7.33"  # Example version
+vulnerabilities = search_vulnerabilities(service_name, service_version,api_key)
+display_vulnerabilities_MySQL_Apache(vulnerabilities)
 
+
+import subprocess
 
 def run_wpscan_plugins(site_url, api_token):
     try:
@@ -53,18 +61,12 @@ def wpscan_version(site_url, api_token):
         # Handle any errors that occur during WPScan execution
         print(f"An error occurred: {e}")
 
-def identify_vulnerabilities(services, site_url):
-    # Identify vulnerabilities in the specified environment
-    print("Identifying vulnerabilities...")
-    # Check for vulnerabilities in the services
-    for service in services:
-        service_name = service.get('name')
-        service_version = service.get('version')
-        if(service_name == "MySQL" or service_name == "Apache"):
-            vulnerabilities = search_vulnerabilities(service_name, service_version,api_key_Mysql_apache)
-            display_vulnerabilities_MySQL_Apache(vulnerabilities)
-        elif(service_name == "WordPress"):
-            run_wpscan_plugins(site_url,api_token_wpscan)
-            wpscan_version(site_url,api_token_wpscan)
-        
+# Example usage
+site_url = "http://localhost/sitevul/"
+api_token = 'bzGYb0wY5MIwW05sbtXbZDWqVxUtn4xV12gGgQmMUGg'
+
+#run_wpscan_plugins(site_url,api_token)
+wpscan_version(site_url,api_token)
+
+def ide
 

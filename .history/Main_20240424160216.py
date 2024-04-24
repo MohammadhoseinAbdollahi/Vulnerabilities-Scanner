@@ -33,7 +33,7 @@ def main():
         if os.system(f"docker network inspect {network_name}") != 0:
             print(f"Network {network_name} does not exist. Please try again.")
             main()
-        scanner = DockerScanner(network_name)
+        scanner = DockerScanner()
         print("Scanning completed!")
         print("Please check the generated PDF files for the scan results.")
         print("But, If you want to see what is inside container prees 1 else press 2")

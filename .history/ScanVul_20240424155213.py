@@ -53,7 +53,15 @@ def wpscan_version(site_url, api_token):
         # Handle any errors that occur during WPScan execution
         print(f"An error occurred: {e}")
 
-def identify_vulnerabilities(services, site_url):
+# Example usage
+site_url = "http://localhost/sitevul/"
+
+
+#run_wpscan_plugins(site_url,api_token)
+wpscan_version(site_url,api_token_wpscan)
+
+def identifiy_vulnerabilities(services):
+    
     # Identify vulnerabilities in the specified environment
     print("Identifying vulnerabilities...")
     # Check for vulnerabilities in the services
@@ -65,6 +73,6 @@ def identify_vulnerabilities(services, site_url):
             display_vulnerabilities_MySQL_Apache(vulnerabilities)
         elif(service_name == "WordPress"):
             run_wpscan_plugins(site_url,api_token_wpscan)
-            wpscan_version(site_url,api_token_wpscan)
+            ru
         
 

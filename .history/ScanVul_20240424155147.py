@@ -1,5 +1,6 @@
 from vulners import Vulners
-import subprocess
+import json
+import requests
 
 api_key_Mysql_apache = "BVM7XHOM569FOS926JD3G78BHVTSJTSM6N6EZM3AWLYW3NVH5ZIM6SYO0DX67RIL"
 api_token_wpscan = 'bzGYb0wY5MIwW05sbtXbZDWqVxUtn4xV12gGgQmMUGg'
@@ -53,7 +54,15 @@ def wpscan_version(site_url, api_token):
         # Handle any errors that occur during WPScan execution
         print(f"An error occurred: {e}")
 
-def identify_vulnerabilities(services, site_url):
+# Example usage
+site_url = "http://localhost/sitevul/"
+
+
+#run_wpscan_plugins(site_url,api_token)
+wpscan_version(site_url,api_token_wpscan)
+
+def identifiy_vulnerabilities(services):
+    
     # Identify vulnerabilities in the specified environment
     print("Identifying vulnerabilities...")
     # Check for vulnerabilities in the services
@@ -63,8 +72,5 @@ def identify_vulnerabilities(services, site_url):
         if(service_name == "MySQL" or service_name == "Apache"):
             vulnerabilities = search_vulnerabilities(service_name, service_version,api_key_Mysql_apache)
             display_vulnerabilities_MySQL_Apache(vulnerabilities)
-        elif(service_name == "WordPress"):
-            run_wpscan_plugins(site_url,api_token_wpscan)
-            wpscan_version(site_url,api_token_wpscan)
         
 
