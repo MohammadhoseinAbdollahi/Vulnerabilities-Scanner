@@ -86,7 +86,7 @@ def main():
         os.system("cat README.md")
         main()
     elif choice == "5":
-        Convert(outputpath)
+        Convert()
         print("Exiting the program. Goodbye!")
         return
 

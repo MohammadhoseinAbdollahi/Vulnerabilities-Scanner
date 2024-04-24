@@ -5,8 +5,6 @@ from Dockerscanvul import DockerScanner
 from TestingURLScanner import LocalhostServiceScanner
 from ScanVul import identify_vulnerabilities
 from Testingsitescanner import Scan_tech
-from ConvertTXTtoPDF import Convert
-outputpath = "/Users/mohammadhosein/Documents/FSTT/outputs"
 def main():
     print("Welcome to the scanning program!")
     print("Please select the scanning environment:")
@@ -14,7 +12,7 @@ def main():
     print("2. Localhosts")
     print("3. Websites")
     print("4. Open README.md file")
-    print("5. Exit And Get Result")
+    print("5. Exit And ")
 
     choice = input("Enter your choice (1-5): ")
 
@@ -86,7 +84,6 @@ def main():
         os.system("cat README.md")
         main()
     elif choice == "5":
-        Convert(outputpath)
         print("Exiting the program. Goodbye!")
         return
 
