@@ -1,0 +1,53 @@
+import os
+# Get the current directory
+current_dir = os.path.dirname(os.path.abspath(__file__))
+# Get a list of all files in the directory
+files = os.listdir(current_dir)
+# Import all files except the current file
+for file in files:
+    if file.endswith(".py") and file != os.path.basename(__file__):
+        module_name = os.path.splitext(file)[0]
+        module = __import__(module_name)
+
+def main():
+    print("Welcome to the scanning program!")
+    print("Please select the scanning environment:")
+    print("1. Docker")
+    print("2. Localhosts")
+    print("3. Websites")
+
+    choice = input("Enter your choice (1-3): ")
+
+    if choice == "1":
+        network_name = input("Enter the network name: ")
+        # TODO: Perform scanning in Docker environment using network_name
+        network_name = input("Enter network name: ")
+    scanner = DockerScanner()
+    scanner.scan_containers_in_network(network_name)
+
+    elif choice == "2":
+        url = input("Enter the URL: ")
+        # TODO: Perform scanning on localhost using the provided URL
+
+    elif choice == "3":
+        url = input("Enter the URL: ")
+        # TODO: Perform scanning on the specified website using the provided URL
+
+    else:
+        print("Invalid choice. Please try again.")
+        return
+
+    # Perform scanning based on the selected environment
+    if choice == "1":
+        network_name = input("Enter the network name: ")
+        # TODO: Perform scanning in Docker environment using network_name
+
+    elif choice == "2":
+        url = input("Enter the URL: ")
+        # TODO: Perform scanning on localhost using the provided URL
+
+    elif choice == "3":
+        url = input("Enter the URL: ")
+        # TODO: Perform scanning on the specified website using the provided URL
+if __name__ == "__main__":
+    main()
