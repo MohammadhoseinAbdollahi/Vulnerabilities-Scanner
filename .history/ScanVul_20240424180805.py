@@ -44,8 +44,7 @@ def run_wpscan_plugins(site_url, api_token):
     except subprocess.CalledProcessError as e:
         # Handle any errors that occur during the execution of the command
         print("Error:", e)
-        vulnerabilities = search_vulnerabilities("WordPress", Wordpress_version,api_key_Mysql_apache)
-        display_vulnerabilities_MySQL_Apache(vulnerabilities)
+        
     
 def wpscan_version(site_url, api_token):
     try:

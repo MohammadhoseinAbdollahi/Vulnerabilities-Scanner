@@ -54,7 +54,7 @@ def main():
         if not url.startswith("http://") and not url.startswith("https://") and not url.startswith("localhost"):
             print("Invalid URL. Please enter a valid URL starting with 'http://' or 'https://'.")
             main()
-        services = LocalhostServiceScanner(url)
+        services = LocalhostSer2viceScanner(url)
         identify_vulnerabilities(services, url)
         print("Scanning completed!")
         print("But, If you want to see what is inside site prees 1 else press 2")
@@ -68,12 +68,11 @@ def main():
             main()
 
     elif choice == "3":
-        url = input("Enter the URL: ")
         # Check if the URL is valid
         if not url.startswith("http://") and not url.startswith("https://") and not url.startswith("localhost"):
             print("Invalid URL. Please enter a valid URL starting with 'http://' or 'https://'.")
             main()
-        
+        url = input("Enter the URL: ")
         technologies = Scan_tech(url)
         identify_vulnerabilities(technologies,url)
         print("Scanning completed!")

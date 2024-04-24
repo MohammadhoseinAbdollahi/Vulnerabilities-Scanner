@@ -1,6 +1,6 @@
 from vulners import Vulners
 import subprocess
-Wordpress_version=""
+
 api_key_Mysql_apache = "BVM7XHOM569FOS926JD3G78BHVTSJTSM6N6EZM3AWLYW3NVH5ZIM6SYO0DX67RIL"
 api_token_wpscan = 'bzGYb0wY5MIwW05sbtXbZDWqVxUtn4xV12gGgQmMUGg'
 
@@ -12,8 +12,8 @@ def search_vulnerabilities(service_name, service_version,api_key):
 
 def display_vulnerabilities_MySQL_Apache(vulnerabilities):
     if vulnerabilities:
-        output_file = "/Users/mohammadhosein/Documents/FSTT/outputs/output.txt"
-        with open(output_file, "a") as file:
+        output_file = "/Users/mohammadhosein/Documents/FSTT/outputs/output{service_name}.txt"
+        with open(output_file, "w") as file:
             if vulnerabilities:
                 file.write("Vulnerabilities found:\n")
             for cve_id, vulnerability_list in vulnerabilities.items():
@@ -24,7 +24,6 @@ def display_vulnerabilities_MySQL_Apache(vulnerabilities):
                     file.write("\n")  # Add a blank line for readability
             else:
                 file.write("No vulnerabilities found.")
-            file.write("---------------------------------------------------------------")
         print("Output saved to:", output_file)
 
 def run_wpscan_plugins(site_url, api_token):
@@ -37,15 +36,12 @@ def run_wpscan_plugins(site_url, api_token):
             print(f"WPScan failed with error code {process.returncode}")
         else:
             output_file = "/Users/mohammadhosein/Documents/FSTT/outputs/outputWPplugins.txt"
-            with open(output_file, "a") as file:
+            with open(output_file, "w") as file:
                 file.write(stdout.decode())
-                file.write("---------------------------------------------------------------")
             print("Output saved to:", output_file)
     except subprocess.CalledProcessError as e:
         # Handle any errors that occur during the execution of the command
         print("Error:", e)
-        vulnerabilities = search_vulnerabilities("WordPress", Wordpress_version,api_key_Mysql_apache)
-        display_vulnerabilities_MySQL_Apache(vulnerabilities)
     
 def wpscan_version(site_url, api_token):
     try:
@@ -57,25 +53,23 @@ def wpscan_version(site_url, api_token):
 
         # Print the WPScan output
         output_file = "/Users/mohammadhosein/Documents/FSTT/outputs/outputWPscan.txt"
-        with open(output_file, "a") as file:
+        with open(output_file, "w") as file:
             file.write(result.stdout)
-            file.write("---------------------------------------------------------------")
             print("Output saved to:", output_file)
 
     except subprocess.CalledProcessError as e:
         # Handle any errors that occur during WPScan execution
         print(f"An error occurred: {e}")
-        vulnerabilities = search_vulnerabilities("WordPress", Wordpress_version,api_key_Mysql_apache)
-        display_vulnerabilities_MySQL_Apache(vulnerabilities)
-        
 
 def identify_vulnerabilities(services, site_url):
     # Identify vulnerabilities in the specified environment
     print("Identifying vulnerabilities...")
     # Check for vulnerabilities in the services
-    for service_name, service_version in services.items():
-        if service_name == "WordPress":
-            Wordpress_version = service_version
+    for service in services:
+        print ()
+        service_name = service.get('name')
+        service_version = service.get('version')
+        if(service_name == "WordPress"):
             run_wpscan_plugins(site_url,api_token_wpscan)
             wpscan_version(site_url,api_token_wpscan)
         else:

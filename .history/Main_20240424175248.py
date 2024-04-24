@@ -68,7 +68,6 @@ def main():
             main()
 
     elif choice == "3":
-        url = input("Enter the URL: ")
         # Check if the URL is valid
         if not url.startswith("http://") and not url.startswith("https://") and not url.startswith("localhost"):
             print("Invalid URL. Please enter a valid URL starting with 'http://' or 'https://'.")

@@ -44,8 +44,6 @@ def run_wpscan_plugins(site_url, api_token):
     except subprocess.CalledProcessError as e:
         # Handle any errors that occur during the execution of the command
         print("Error:", e)
-        vulnerabilities = search_vulnerabilities("WordPress", Wordpress_version,api_key_Mysql_apache)
-        display_vulnerabilities_MySQL_Apache(vulnerabilities)
     
 def wpscan_version(site_url, api_token):
     try:
@@ -65,7 +63,7 @@ def wpscan_version(site_url, api_token):
     except subprocess.CalledProcessError as e:
         # Handle any errors that occur during WPScan execution
         print(f"An error occurred: {e}")
-        vulnerabilities = search_vulnerabilities("WordPress", Wordpress_version,api_key_Mysql_apache)
+        vulnerabilities = search_vulnerabilities("WordPress", W,api_key_Mysql_apache)
         display_vulnerabilities_MySQL_Apache(vulnerabilities)
         
 
@@ -75,7 +73,6 @@ def identify_vulnerabilities(services, site_url):
     # Check for vulnerabilities in the services
     for service_name, service_version in services.items():
         if service_name == "WordPress":
-            Wordpress_version = service_version
             run_wpscan_plugins(site_url,api_token_wpscan)
             wpscan_version(site_url,api_token_wpscan)
         else:

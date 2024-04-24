@@ -1,0 +1,354 @@
+Vulnerabilities found:
+- CVE ID: NVD
+  Description: Microsoft.Data.SqlClient and System.Data.SqlClient SQL Data Provider Security Feature Bypass Vulnerability
+  CVSS Score: 4.0
+
+- CVE ID: NVD
+  Description: Microsoft OLE DB Driver for SQL Server Remote Code Execution Vulnerability
+  CVSS Score: 6.8
+
+- CVE ID: NVD
+  Description: Microsoft OLE DB Driver for SQL Server Remote Code Execution Vulnerability
+  CVSS Score: 6.8
+
+- CVE ID: NVD
+  Description: Microsoft OLE DB Driver for SQL Server Remote Code Execution Vulnerability
+  CVSS Score: 6.8
+
+- CVE ID: NVD
+  Description: Microsoft OLE DB Driver for SQL Server Remote Code Execution Vulnerability
+  CVSS Score: 6.8
+
+- CVE ID: NVD
+  Description: Microsoft OLE DB Driver for SQL Server Remote Code Execution Vulnerability
+  CVSS Score: 6.8
+
+- CVE ID: NVD
+  Description: Microsoft OLE DB Driver for SQL Server Remote Code Execution Vulnerability
+  CVSS Score: 6.8
+
+- CVE ID: NVD
+  Description: Microsoft OLE DB Driver for SQL Server Remote Code Execution Vulnerability
+  CVSS Score: 6.8
+
+- CVE ID: NVD
+  Description: Microsoft OLE DB Driver for SQL Server Remote Code Execution Vulnerability
+  CVSS Score: 6.8
+
+- CVE ID: NVD
+  Description: Microsoft OLE DB Driver for SQL Server Remote Code Execution Vulnerability
+  CVSS Score: 6.8
+
+- CVE ID: NVD
+  Description: Microsoft OLE DB Driver for SQL Server Remote Code Execution Vulnerability
+  CVSS Score: 6.8
+
+- CVE ID: NVD
+  Description: Microsoft OLE DB Driver for SQL Server Remote Code Execution Vulnerability
+  CVSS Score: 6.8
+
+- CVE ID: NVD
+  Description: Microsoft ODBC Driver for SQL Server Remote Code Execution Vulnerability
+  CVSS Score: 6.8
+
+- CVE ID: NVD
+  Description: Microsoft ODBC Driver for SQL Server Remote Code Execution Vulnerability
+  CVSS Score: 6.8
+
+- CVE ID: NVD
+  Description: Microsoft ODBC Driver for SQL Server Remote Code Execution Vulnerability
+  CVSS Score: 6.8
+
+- CVE ID: NVD
+  Description: Microsoft ODBC Driver for SQL Server Remote Code Execution Vulnerability
+  CVSS Score: 6.8
+
+- CVE ID: NVD
+  Description: Microsoft ODBC Driver for SQL Server Remote Code Execution Vulnerability
+  CVSS Score: 6.8
+
+- CVE ID: NVD
+  Description: Microsoft ODBC Driver for SQL Server Remote Code Execution Vulnerability
+  CVSS Score: 6.8
+
+- CVE ID: NVD
+  Description: Microsoft ODBC Driver for SQL Server Remote Code Execution Vulnerability
+  CVSS Score: 6.8
+
+- CVE ID: NVD
+  Description: Microsoft ODBC Driver for SQL Server Remote Code Execution Vulnerability
+  CVSS Score: 6.8
+
+- CVE ID: NVD
+  Description: Microsoft ODBC Driver for SQL Server Remote Code Execution Vulnerability
+  CVSS Score: 6.8
+
+- CVE ID: NVD
+  Description: Microsoft ODBC Driver for SQL Server Remote Code Execution Vulnerability
+  CVSS Score: 6.8
+
+- CVE ID: NVD
+  Description: Microsoft OLE DB Driver for SQL Server Remote Code Execution Vulnerability
+  CVSS Score: 6.8
+
+- CVE ID: NVD
+  Description: Microsoft OLE DB Driver for SQL Server Remote Code Execution Vulnerability
+  CVSS Score: 6.8
+
+- CVE ID: NVD
+  Description: Microsoft ODBC Driver for SQL Server Remote Code Execution Vulnerability
+  CVSS Score: 6.8
+
+- CVE ID: NVD
+  Description: Microsoft OLE DB Driver for SQL Server Remote Code Execution Vulnerability
+  CVSS Score: 6.8
+
+- CVE ID: NVD
+  Description: Microsoft ODBC Driver for SQL Server Remote Code Execution Vulnerability
+  CVSS Score: 6.8
+
+- CVE ID: NVD
+  Description: Microsoft OLE DB Driver for SQL Server Remote Code Execution Vulnerability
+  CVSS Score: 6.8
+
+- CVE ID: NVD
+  Description: Microsoft OLE DB Driver for SQL Server Remote Code Execution Vulnerability
+  CVSS Score: 6.8
+
+- CVE ID: NVD
+  Description: Microsoft ODBC Driver for SQL Server Remote Code Execution Vulnerability
+  CVSS Score: 6.8
+
+- CVE ID: NVD
+  Description: Microsoft OLE DB Driver for SQL Server Remote Code Execution Vulnerability
+  CVSS Score: 6.8
+
+- CVE ID: NVD
+  Description: Microsoft OLE DB Driver for SQL Server Remote Code Execution Vulnerability
+  CVSS Score: 5.1
+
+- CVE ID: NVD
+  Description: Microsoft OLE DB Driver for SQL Server Remote Code Execution Vulnerability
+  CVSS Score: 6.8
+
+- CVE ID: NVD
+  Description: Microsoft OLE DB Driver for SQL Server Remote Code Execution Vulnerability
+  CVSS Score: 6.8
+
+- CVE ID: NVD
+  Description: Microsoft OLE DB Driver for SQL Server Remote Code Execution Vulnerability
+  CVSS Score: 6.8
+
+- CVE ID: NVD
+  Description: Microsoft OLE DB Driver for SQL Server Remote Code Execution Vulnerability
+  CVSS Score: 6.8
+
+- CVE ID: NVD
+  Description: Microsoft OLE DB Driver for SQL Server Remote Code Execution Vulnerability
+  CVSS Score: 6.8
+
+- CVE ID: NVD
+  Description: Microsoft OLE DB Driver for SQL Server Remote Code Execution Vulnerability
+  CVSS Score: 6.8
+
+- CVE ID: NVD
+  Description: Microsoft OLE DB Driver for SQL Server Remote Code Execution Vulnerability
+  CVSS Score: 6.8
+
+No vulnerabilities found.---------------------------------------------------------------Vulnerabilities found:
+- CVE ID: exploit
+  Description: 
+  CVSS Score: 4.3
+
+- CVE ID: exploit
+  Description: 
+  CVSS Score: 4.3
+
+- CVE ID: exploit
+  Description: 
+  CVSS Score: 4.3
+
+- CVE ID: exploit
+  Description: [jQuery](https://jquery.com/) — New Wave JavaScript
+============...
+  CVSS Score: 4.3
+
+- CVE ID: exploit
+  Description: [jQuery](http://jquery.com/) - New Wave JavaScript
+=============...
+  CVSS Score: 4.3
+
+- CVE ID: exploit
+  Description: # CVE-2020-11022 CVE-2020-11023
+
+> In jQuery versions greater th...
+  CVSS Score: 4.3
+
+- CVE ID: exploit
+  Description: This repository contains the patches for [CVE-2020-11022](https:...
+  CVSS Score: 6.5
+
+- CVE ID: exploit
+  Description: 
+  CVSS Score: 4.3
+
+- CVE ID: exploit
+  Description: 
+  CVSS Score: 4.3
+
+- CVE ID: exploit
+  Description: 
+  CVSS Score: 4.3
+
+- CVE ID: exploit
+  Description: 
+  CVSS Score: 4.3
+
+- CVE ID: exploit
+  Description: 
+  CVSS Score: 4.3
+
+- CVE ID: exploit
+  Description: 
+  CVSS Score: 4.3
+
+- CVE ID: NVD
+  Description: Cross-site scripting (XSS) vulnerability in jQuery before 1.6.3, when using location.hash to select elements, allows remote attackers to inject arbitrary web script or HTML via a crafted tag.
+  CVSS Score: 4.3
+
+- CVE ID: NVD
+  Description: jQuery before 1.9.0 is vulnerable to Cross-site Scripting (XSS) attacks. The jQuery(strInput) function does not differentiate selectors from HTML in a reliable fashion. In vulnerable versions, jQuery determined whether the input was HTML by looking for the '<' character anywhere in the string, giving attackers more flexibility when attempting to construct a malicious payload. In fixed versions, jQuery only deems the input to be HTML if it explicitly starts with the '<' character, limiting exploitability only to attackers who can control the beginning of a string, which is far less common.
+  CVSS Score: 4.3
+
+- CVE ID: NVD
+  Description: In jQuery versions greater than or equal to 1.2 and before 3.5.0, passing HTML from untrusted sources - even after sanitizing it - to one of jQuery's DOM manipulation methods (i.e. .html(), .append(), and others) may execute untrusted code. This problem is patched in jQuery 3.5.0.
+  CVSS Score: 4.3
+
+- CVE ID: NVD
+  Description: In jQuery versions greater than or equal to 1.0.3 and before 3.5.0, passing HTML containing <option> elements from untrusted sources - even after sanitizing it - to one of jQuery's DOM manipulation methods (i.e. .html(), .append(), and others) may execute untrusted code. This problem is patched in jQuery 3.5.0.
+  CVSS Score: 4.3
+
+- CVE ID: NVD
+  Description: jquery prior to 1.9.0 allows Cross-site Scripting attacks via the load method. The load method fails to recognize and remove "<script>" HTML tags that contain a whitespace character, i.e: "</script >", which results in the enclosed script logic to be executed.
+  CVSS Score: 4.3
+
+- CVE ID: NVD
+  Description: The jQuery Validation Plugin provides drop-in validation for your existing forms. It is published as an npm package "jquery-validation". jquery-validation before version 1.19.3 contains one or more regular expressions that are vulnerable to ReDoS (Regular Expression Denial of Service). This is fixed in 1.19.3.
+  CVSS Score: 5.0
+
+- CVE ID: NVD
+  Description: The jQuery Validation Plugin (jquery-validation) provides drop-in validation for forms. Versions of jquery-validation prior to 1.19.5 are vulnerable to regular expression denial of service (ReDoS) when an attacker is able to supply arbitrary input to the url2 method. This is due to an incomplete fix for CVE-2021-43306. Users should upgrade to version 1.19.5 to receive a patch.
+  CVSS Score: 5.0
+
+- CVE ID: NVD
+  Description: Cross-site scripting (XSS) vulnerability in jQuery before 1.6.3, when using location.hash to select elements, allows remote attackers to inject arbitrary web script or HTML via a crafted tag.
+  CVSS Score: 4.3
+
+- CVE ID: NVD
+  Description: jQuery before 1.9.0 is vulnerable to Cross-site Scripting (XSS) attacks. The jQuery(strInput) function does not differentiate selectors from HTML in a reliable fashion. In vulnerable versions, jQuery determined whether the input was HTML by looking for the '<' character anywhere in the string, giving attackers more flexibility when attempting to construct a malicious payload. In fixed versions, jQuery only deems the input to be HTML if it explicitly starts with the '<' character, limiting exploitability only to attackers who can control the beginning of a string, which is far less common.
+  CVSS Score: 4.3
+
+- CVE ID: NVD
+  Description: jquery prior to 1.9.0 allows Cross-site Scripting attacks via the load method. The load method fails to recognize and remove "<script>" HTML tags that contain a whitespace character, i.e: "</script >", which results in the enclosed script logic to be executed.
+  CVSS Score: 4.3
+
+- CVE ID: software
+  Description: Affected versions of `jquery` are vulnerable to cross-site scripting. This occurs because the main `jquery` function uses a regular expression to differentiate between HTML and selectors, but does not properly anchor the regular expression. The result is that `jquery` may interpret HTML as selectors when given certain inputs, allowing for client side code execution.
+
+## Proof of Concept
+```
+$("#log").html(
+    $("element[attribute='<img src=\"x\" onerror=\"alert(1)\" />']").html()
+);
+```
+
+
+
+
+## Recommendation
+
+Update to version 1.9.0 or later.
+  CVSS Score: 4.3
+
+- CVE ID: software
+  Description: Cross-site scripting (XSS) vulnerability in jQuery before 1.6.3, when using location.hash to select elements, allows remote attackers to inject arbitrary web script or HTML via a crafted tag.
+  CVSS Score: 4.3
+
+- CVE ID: software
+  Description: Versions of `jquery` prior to 1.9.0 are vulnerable to Cross-Site Scripting. The load method fails to recognize and remove `<script>` HTML tags that contain a whitespace character, i.e: `</script >`, which results in the enclosed script logic to be executed. This allows attackers to execute arbitrary JavaScript in a victim's browser.
+
+
+## Recommendation
+
+Upgrade to version 1.9.0 or later.
+  CVSS Score: 4.3
+
+- CVE ID: software
+  Description: Affected versions of `jquery` interpret `text/javascript` responses from cross-origin ajax requests, and automatically execute the contents in `jQuery.globalEval`, even when the ajax request doesn't contain the `dataType` option.
+
+
+## Recommendation
+
+Update to version 3.0.0 or later.
+  CVSS Score: 4.3
+
+- CVE ID: software
+  Description: ## Overview
+
+Versions of `jquery` prior to 1.9.0 are vulnerable to Cross-Site Scripting. The load method fails to recognize and remove "<script>" HTML tags that contain a whitespace character, i.e: "</script >", which results in the enclosed script logic to be executed. This allows attackers to execute arbitrary JavaScript in a victim's browser.
+
+## Recommendation
+
+Upgrade to version 1.9.0 or later.
+
+## References
+
+- [GitHub Advisory](https://github.com/advisories/GHSA-q4m3-2j7h-f7xw)
+  CVSS Score: 4.3
+
+- CVE ID: software
+  Description: Affected versions of `jquery` are vulnerable to cross-site scripting. This occurs because the main `jquery` function uses a regular expression to differentiate between HTML and selectors, but does not properly anchor the regular expression. The result is that `jquery` may interpret HTML as selectors when given certain inputs, allowing for client side code execution.
+
+## Proof of Concept
+```
+$("#log").html(
+    $("element[attribute='<img src=\"x\" onerror=\"alert(1)\" />']").html()
+);
+```
+
+
+
+
+## Recommendation
+
+Update to version 1.9.0 or later.
+  CVSS Score: 4.3
+
+- CVE ID: software
+  Description: Cross-site scripting (XSS) vulnerability in jQuery before 1.6.3, when using location.hash to select elements, allows remote attackers to inject arbitrary web script or HTML via a crafted tag.
+  CVSS Score: 4.3
+
+- CVE ID: software
+  Description: Versions of `jquery` prior to 1.9.0 are vulnerable to Cross-Site Scripting. The load method fails to recognize and remove `<script>` HTML tags that contain a whitespace character, i.e: `</script >`, which results in the enclosed script logic to be executed. This allows attackers to execute arbitrary JavaScript in a victim's browser.
+
+
+## Recommendation
+
+Upgrade to version 1.9.0 or later.
+  CVSS Score: 4.3
+
+- CVE ID: software
+  Description: Affected versions of `jquery` interpret `text/javascript` responses from cross-origin ajax requests, and automatically execute the contents in `jQuery.globalEval`, even when the ajax request doesn't contain the `dataType` option.
+
+
+## Recommendation
+
+Update to version 3.0.0 or later.
+  CVSS Score: 4.3
+
+- CVE ID: software
+  Description: jquery is vulnerable to cross-site scripting (XSS). The regular expression in `load()` method does not properly remove HTML tags containing a whitespace character in the closing script tag (e.g `
+  CVSS Score: 4.3
+
+No vulnerabilities found.
+---------------------------------------------------------------
