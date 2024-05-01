@@ -39,7 +39,9 @@ def main():
             main()
         DockerScanner(network_name)
         print("Scanning completed!")
-        choice = input("Press Enter to back menu...")
+        print("Please check the generated PDF files for the scan results.")
+        print("But, If you want to see what is inside container prees 1 else press 2")
+        choice = input("Enter your choice (1-2): ")
         print("ok")
         main()
             
@@ -52,9 +54,15 @@ def main():
         services = LocalhostServiceScanner(url)
         identify_vulnerabilities(services, url)
         print("Scanning completed!")
-        choice = input("Press Enter to back menu...")
-        print("ok")
-        main()
+        print("But, If you want to see what is inside site prees 1 else press 2")
+        choice = input("Enter your choice (1-2): ")
+        if choice == "1":
+            print("wait for this part")
+            print()
+            main()
+        else:
+            print("ok")
+            main()
 
     elif choice == "3":
         url = input("Enter the URL: ")
