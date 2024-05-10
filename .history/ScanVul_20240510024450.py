@@ -42,7 +42,7 @@ def wpscan_version(site_url, api_token):
             file.write("---------------------------------------------------------------")
             print("Output saved to:", output_file)
 
-    except subprocess.CalledProcessError or TimeoutError as e  :
+    except subprocess.CalledProcessError as e  TimeoutError:
         # Handle any errors that occur during WPScan execution
         print(f"An error occurred: {e}")
         vulnerabilities = search_vulnerabilities("WordPress", Wordpress_version,api_key_Mysql_apache)
