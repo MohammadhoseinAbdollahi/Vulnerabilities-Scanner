@@ -31,6 +31,7 @@ def wpscan_version(site_url, api_token):
     try:
         # Construct the WPScan command without specifying the WordPress version
         command = ['wpscan', '--url', site_url, '--enumerate', 'vp', '--no-update', '--api-token', api_token]
+        print("Running WPScan command:", " ".join(command))
         # Execute the WPScan command and capture the output
         result = subprocess.run(command, capture_output=True, text=True, check=True)
         # Print the WPScan output
