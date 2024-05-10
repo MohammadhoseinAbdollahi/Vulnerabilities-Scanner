@@ -57,11 +57,11 @@ def DetectCMSVersion(url):
     versions = extract_cms_version(url)
     if versions:
         s = versions[0]
-        s = s.replace('WordPress: ', '')  
-        version = s.split(".")[0:2]  
-        version = ".".join(version)  
-        s = f"CMS {version}"  
-        s = s.replace('WordPress ', '')  
+        s = s.replace('WordPress: ', '')  # Remove 'WordPress: ' from the string
+        version = s.split(".")[0:2]  # Split the string on "." and take the first two parts
+        version = ".".join(version)  # Join the parts back together with "."
+        s = f"CMS {version}"  # Format the string with "CMS" at the start
+        s = s.replace('WordPress ', '')  # Remove 'WordPress ' from the string
         Database = Database_finder(s)
         return Database
     else:
