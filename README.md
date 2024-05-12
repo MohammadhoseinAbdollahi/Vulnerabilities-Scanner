@@ -1,4 +1,4 @@
-# FSTT
+# Vulnerabilities Scanner
 Security Assignment
 
 This is the README file for the security assignment.
