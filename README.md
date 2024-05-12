@@ -67,13 +67,11 @@ To use the program, follow these steps:
 3. in "Output" folder, you can see the files that containing the vulnerabilities of the services that were running in the provided url or docker network in .txt and .pdf style."some file provided for sample for running the program by yourself delete all files in the "output" folder. 
 
 
-## Contributing
+## Contribution
 
-The project defined by [@auino](https://github.com/auino), our professor in security studies .
-
-## License
+The project was defined by [@auino](https://github.com/auino), our professor in security studies .
 
 
 ## Contact
 
-If you have any questions or suggestions regarding the project, please contact the project maintainer at [@mohiabd99](https://github.com/Mohiabd99).
+If you have any questions or suggestions regarding the project, please contact the project maintainer at [@MohmmadhoseinAbdollahi](https://github.com/MohmmadhoseinAbdollahi).
