@@ -12,7 +12,7 @@ def search_vulnerabilities(service_name, service_version,api_key):
 
 def display_vulnerabilities_MySQL_Apache(vulnerabilities):
     if vulnerabilities:
-        output_file = ""
+        output_file = "/Users/mohammadhosein/Documents/FSTT/outputs/output.txt"
         with open(output_file, "a") as file:
             if vulnerabilities:
                 file.write("Vulnerabilities found:\n")
@@ -34,7 +34,7 @@ def wpscan_version(site_url, api_token):
         # Execute the WPScan command and capture the output
         result = subprocess.run(command, capture_output=True, text=True, check=True)
         # Print the WPScan output
-        output_file = ""
+        output_file = "/Users/mohammadhosein/Documents/FSTT/outputs/outputWPscan.txt"
         with open(output_file, "a") as file:
             file.write(result.stdout)
             file.write("---------------------------------------------------------------")

@@ -34,7 +34,7 @@ def wpscan_version(site_url, api_token):
         # Execute the WPScan command and capture the output
         result = subprocess.run(command, capture_output=True, text=True, check=True)
         # Print the WPScan output
-        output_file = ""
+        output_file = "/Users/mohammadhosein/Documents/FSTT/outputs/outputWPscan.txt"
         with open(output_file, "a") as file:
             file.write(result.stdout)
             file.write("---------------------------------------------------------------")
